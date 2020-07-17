@@ -1748,9 +1748,25 @@ Commit your code regularly and meaningfully. This helps both you (in case you ev
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. Can you explain your data model, data schema to me?
+
+I have two "real" Tables, and one join table, my main driving table being users. Users has a one to many relationship with Todos.
+Todos has a many to one relationship to users. My join table brings together the usernames from users and a count of not completed todos.
+
 2. Can you explain how you connected your API to a database?
+
+The api is connected to the database through custom services, which allows managment of acess/data between the controllers and the repositories. 
+
 3. Can you explain the flow of data from client through the backend system and back to the client?
+
+The controllers are set up to listen for requests from defined endpoints, once the controller receives the request it fires
+off the appropriate method. Inside the called method, it calls a defined method from services, which this service method 
+takes care of any data manipulation or authentication checks. The services are autowired to the needed repositories which 
+handles the CRUD operations on the actual tables/models. From there the service method will complete and return the needed data or throw
+an exception to the controller, which then reports back to the client. 
+
 4. How did you handle querying in your application: custom querying vs JPA Querying?
+I used the built in methods which ustilize JPA Querying for the basic MVP requirments, and utilized a Custom Query using a custom SQL statment for the stretch.
+JPA Querying is similar to SQL with minor syntax differences.
 
 ## Instructions
 
